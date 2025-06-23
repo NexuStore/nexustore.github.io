@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NexuStore - Free Game Downloads</title>
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  header {
+    background-color: #1e88e5;
+    padding: 1rem 2rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  header .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    cursor: default;
+  }
+  nav {
+    /* Intentionally empty - no buttons */
+  }
+  .search-container {
+    margin: 2rem auto;
+    max-width: 600px;
+    display: flex;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .search-container input[type="text"] {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    font-size: 1rem;
+  }
+  .search-container button {
+    background-color: #1e88e5;
+    border: none;
+    color: white;
+    padding: 0 1rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  .search-container button:hover {
+    background-color: #1565c0;
+  }
+  main {
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    padding: 0 1rem;
+  }
+  h2 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #1e88e5;
+  }
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+    gap: 1.5rem;
+  }
+  a.game-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  a.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .game-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+  }
+  .game-info {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .game-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .game-description {
+    font-size: 0.9rem;
+    color: #555;
+    flex-grow: 1;
+  }
+  .os-compatibility {
+    margin-top: 0.75rem;
+  }
+  .os-badge {
+    display: inline-block;
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    user-select: none;
+  }
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #777;
+    font-size: 0.9rem;
+  }
+  .no-results {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">NexuStore</div>
+  <nav>
+    <!-- No buttons here -->
+  </nav>
+</header>
+<div class="search-container">
+  <input id="searchInput" type="text" placeholder="Search games..." aria-label="Search games" onkeydown="if(event.key==='Enter'){performSearch();}" />
+  <button type="button" aria-label="Search" onclick="performSearch()">🔍</button>
+</div>
+<main>
+  <h2>Featured Games</h2>
+  <div id="gamesGrid" class="games-grid">
+    <a href="https://drive.usercontent.google.com/download?id=1rc1KNlq8Dz4PgTbiUOIqJS_rzBGKbJOl&export=download&authuser=0" class="game-card" data-title="Geometry Dash" tabindex="0">
+      <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/322170/header.jpg?t=1703006148" alt="Geometry Dash" class="game-image" />
+      <div class="game-info">
+        <div class="game-title">Geometry Dash</div>
+        <div class="game-description">Jump and fly your way through danger in this rhythm-based action platformer!</div>
+        <div class="os-compatibility">
+          <span class="os-badge">Windows</span>
+          <span class="os-badge">Android</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://example.com/space-quest" class="game-card" data-title="People Playground" tabindex="0">
+      <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1118200/header.jpg?t=1717246983" alt="People Playground" class="game-image" />
+      <div class="game-info">
+        <div class="game-title">People Playground</div>
+        <div class="game-description">Shoot, stab, burn, poison, tear, vaporise, or crush ragdolls in a large open space.</div>
+        <div class="os-compatibility">
+          <span class="os-badge">Windows</span>
+        </div>
+      </div>
+    </a>
+    <a href="https://example.com/space-quest" class="game-card" data-title="Minecraft" tabindex="0">
+      <img src="https://store-images.s-microsoft.com/image/apps.60323.14294656681058683.4d17bdd8-7026-429a-846f-cf7836bc9e56.a69e6905-8926-4a48-b243-14a039b97aae?mode=scale&q=90&h=1080&w=1920&format=jpg" alt="Minecraft" class="game-image" />
+      <div class="game-info">
+        <div class="game-title">Minecraft</div>
+        <div class="game-description">Explore your own unique world, survive the night and create anything you can imagine!</div>
+        <div class="os-compatibility">
+          <span class="os-badge">Android</span>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div id="noResultsMessage" class="no-results" style="display:none;">No games found matching your search.</div>
+</main>
+<footer>
+  &copy; 2025 NexuStore - All rights reserved.
+</footer>
+<script>
+  function performSearch() {
+    const input = document.getElementById('searchInput').value.trim().toLowerCase();
+    const gamesGrid = document.getElementById('gamesGrid');
+    const noResultsMessage = document.getElementById('noResultsMessage');
+    let foundAny = false;
+    const gameCards = gamesGrid.querySelectorAll('a.game-card');
+    gameCards.forEach(card => {
+      const title = card.getAttribute('data-title').toLowerCase();
+      if(title.includes(input)) {
+        card.style.display = '';
+        foundAny = true;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    noResultsMessage.style.display = foundAny ? 'none' : 'block';
+  }
+</script>
+</body>
+</html>
