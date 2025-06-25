@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" href="https://nexustore.github.io/assets/NexuStoreByTermos.png" type="image/png">
+<link rel="icon" href="https://nexustore.github.io/assets/NexuStoreByTermos.png" type="image/png" />
 <title>NexuStore - Free Game Downloads</title>
 <style>
   /* Reset and base */
@@ -32,7 +32,7 @@
     cursor: default;
   }
   nav {
-    /* Intentionally empty - no buttons */
+    /* No buttons here */
   }
   .search-container {
     margin: 2rem auto;
@@ -87,6 +87,7 @@
     text-decoration: none;
     color: inherit;
     cursor: pointer;
+    position: relative;
   }
   a.game-card:hover {
     transform: translateY(-8px);
@@ -127,6 +128,24 @@
     margin-right: 0.5rem;
     user-select: none;
   }
+  /* Style for the badge with darker green outline, semi-transparent background, and outline */
+  .download-status {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(76, 175, 80, 0.5); /* semi-transparent green */
+    border: 2px solid #2e7d32; /* darker green outline */
+    border-radius: 20px; /* capsule shape */
+    padding: 4px 10px; /* padding to expand width if needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    white-space: nowrap; /* prevent wrapping */
+    max-width: 80%; /* prevent overflow */
+  }
   footer {
     text-align: center;
     padding: 2rem 1rem;
@@ -164,6 +183,9 @@
           <span class="os-badge">Windows</span>
           <span class="os-badge">Android</span>
         </div>
+        <div class="download-status" title="Download only">
+          ⬇️
+        </div>
       </div>
     </a>
     <a href="https://nexustore.github.io/games/game2.html" class="game-card" data-title="People Playground" tabindex="0">
@@ -173,6 +195,9 @@
         <div class="game-description">Shoot, stab, burn, poison, tear, vaporise, or crush ragdolls in a large open space.</div>
         <div class="os-compatibility">
           <span class="os-badge">Windows</span>
+        </div>
+        <div class="download-status" title="Download only">
+          ⬇️
         </div>
       </div>
     </a>
@@ -184,22 +209,28 @@
         <div class="os-compatibility">
           <span class="os-badge">Android</span>
         </div>
+        <div class="download-status" title="Download only">
+          ⬇️
+        </div>
       </div>
     </a>
     <a href="https://nexustore.github.io/games/game4.html" class="game-card" data-title="Friday Night Funkin" tabindex="0">
       <img src="https://wallpapers.com/images/featured/friday-night-funkin-tpsteierwo9am3z9.jpg" alt="Friday Night Funkin" class="game-image" />
       <div class="game-info">
         <div class="game-title">Friday Night Funkin</div>
-        <div class="game-description">Uh oh! Your tryin to kiss ur hot girlfriend, but her MEAN and EVIL dad is trying to KILL you! He's an ex-rockstar, the only way to get to his heart? The power of music...</div>
+        <div class="game-description">Uh oh! You're tryin to kiss ur hot girlfriend, but her MEAN and EVIL dad is trying to KILL you! He's an ex-rockstar, the only way to get to his heart? The power of music...</div>
         <div class="os-compatibility">
           <span class="os-badge">Windows</span>
           <span class="os-badge">Mac</span>
           <span class="os-badge">Linux</span>
         </div>
+        <div class="download-status" title="Download only">
+          ⬇️
+        </div>
       </div>
     </a>
-    <a href="https://nexustore.github.io/games/game5.html" class="game-card" data-title="Friday Night Funkin" tabindex="0">
-      <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1545450/header.jpg?t=1736795580" alt="Friday Night Funkin" class="game-image" />
+    <a href="https://nexustore.github.io/games/game5.html" class="game-card" data-title="Incredibox" tabindex="0">
+      <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1545450/header.jpg?t=1736795580" alt="Incredibox" class="game-image" />
       <div class="game-info">
         <div class="game-title">Incredibox</div>
         <div class="game-description">Incredibox is a music app - you can create your own music with the help of a cool crew of beatboxers.</div>
@@ -207,9 +238,12 @@
           <span class="os-badge">Windows</span>
           <span class="os-badge">Android</span>
         </div>
+        <div class="download-status" title="Download only">
+          ⬇️
+        </div>
       </div>
     </a>
-        <a href="https://nexustore.github.io/games/game6.html" class="game-card" data-title="Minecraft" tabindex="0">
+    <a href="https://nexustore.github.io/games/game6.html" class="game-card" data-title="Minecraft" tabindex="0">
       <img src="https://wallpapercave.com/wp/wp7551015.jpg" alt="Minecraft" class="game-image" />
       <div class="game-info">
         <div class="game-title">Minecraft Java</div>
@@ -218,6 +252,22 @@
           <span class="os-badge">Windows</span>
           <span class="os-badge">Mac</span>
           <span class="os-badge">Linux</span>
+        </div>
+        <div class="download-status" title="Download only">
+          ⬇️
+        </div>
+      </div>
+    </a>
+        <a href="https://nexustore.github.io/games/game7.html" class="game-card" data-title="People Playground" tabindex="0">
+      <img src="https://project-screenshots.websim.com/0197a278-b110-7183-9608-32bebd8615a4" alt="People Playground" class="game-image" />
+      <div class="game-info">
+        <div class="game-title">Break n' Blocks</div>
+        <div class="game-description">Drop your pickaxe, and start breaking these blocks!</div>
+        <div class="os-compatibility">
+          <span class="os-badge">Every Device</span>
+        </div>
+        <div class="download-status" title="Online only">
+          🌐
         </div>
       </div>
     </a>
