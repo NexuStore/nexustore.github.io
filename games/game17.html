@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" href="https://nexustore.github.io/assets/NexuStoreByTermos.png" type="image/png">
-<title>NexuStore - Play Incredibox Online</title>
+<title>NexuStore - Particle Life</title>
 <style>
   /* Reset and base */
   * {
@@ -159,6 +159,89 @@
     background-color: rgba(0, 0, 0, 0.7);
   }
   
+  /* Download button styles */
+  .download-buttons-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  
+  .btn-download {
+    flex: 1 1 150px;
+    padding: 0.85rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+    transition: background 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .btn-windows {
+    background: linear-gradient(135deg, #0078d7 0%, #005ea2 100%);
+  }
+  
+  .btn-windows:hover {
+    background: linear-gradient(135deg, #005ea2 0%, #003f6b 100%);
+  }
+  
+  .btn-macos {
+    background: linear-gradient(135deg, #333333 0%, #111111 100%);
+  }
+  
+  .btn-macos:hover {
+    background: linear-gradient(135deg, #111111 0%, #000000 100%);
+  }
+  
+  .btn-linux {
+    background: linear-gradient(135deg, #f0ad4e 0%, #c2851f 100%);
+    color: #3a2e0f;
+  }
+  
+  .btn-linux:hover {
+    background: linear-gradient(135deg, #c2851f 0%, #8a5b0d 100%);
+  }
+  
+  .btn-android {
+    background: linear-gradient(135deg, #3ddc84 0%, #27ae60 100%);
+    color: white;
+  }
+  
+  .btn-android:hover {
+    background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+  }
+  
+  .progress-container {
+    margin-top: 2rem;
+    display: none;
+  }
+  
+  .progress-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background-color: #1e88e5;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+  
   @keyframes spin {
     to { transform: translate(-50%, -50%) rotate(360deg); }
   }
@@ -175,7 +258,7 @@
     <a href="https://nexustore.github.io/" class="back-button" aria-label="Back to homepage">← Back to NexuStore</a>
     
     <div class="game-container" id="gameContainer">
-      <img src="https://hunar4321.github.io/particle-life/images/big_pic.jpg" alt="Incredibox background" class="thumbnail-background" />
+      <img src="https://hunar4321.github.io/particle-life/images/big_pic.jpg" alt="Particle Life background" class="thumbnail-background" />
       <iframe class="game-iframe" id="gameIframe" src="" allowfullscreen></iframe>
       <button class="play-button" id="playButton" aria-label="Play game"></button>
       <div class="loading-spinner" id="loadingSpinner"></div>
@@ -184,11 +267,25 @@
     
     <h1>Particle Life</h1>
     <p class="description">
-      Thousands of particles interact and evolve, creating intricate, life-like structures based on simple, foundational rules.<br>
+      Thousands of particles interact and evolve, creating intricate, life-like structures based on simple, foundational rules.
     </p>
+    
+    <div class="download-buttons-container" id="downloadButtonsContainer">
+      <button class="btn-download btn-windows" data-link="https://github.com/tom-mohr/particle-life-app/releases/latest/download/particle-life-app.zip" aria-label="Download for Windows">
+        Download for Windows
+      </button>
+    </div>
+      
+    <div class="progress-container" aria-live="polite" aria-atomic="true" aria-label="Download progress" id="progressContainer">
+      <div class="progress-label" id="progressLabel">Download Progress</div>
+      <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
   </div>
   
   <script>
+    // Game play functionality
     const playButton = document.getElementById('playButton');
     const loadingSpinner = document.getElementById('loadingSpinner');
     const gameIframe = document.getElementById('gameIframe');
@@ -246,6 +343,47 @@
         fullscreenBtn.textContent = 'Fullscreen';
       }
     }
+    
+    // Download functionality
+    const buttons = document.querySelectorAll('.btn-download');
+    const progressContainer = document.getElementById('progressContainer');
+    const progressFill = document.getElementById('progressFill');
+    const progressBar = document.getElementById('progressBar');
+    const downloadButtonsContainer = document.getElementById('downloadButtonsContainer');
+    let progress = 0;
+    let downloadLink = '';
+    
+    function startDownload(link) {
+      downloadLink = link;
+      progress = 0;
+      progressFill.style.width = '0%';
+      progressBar.setAttribute('aria-valuenow', 0);
+      progressContainer.style.display = 'block';
+      downloadButtonsContainer.style.display = 'none'; // Hide all download buttons
+      simulateProgress();
+    }
+    
+    function simulateProgress() {
+      if(progress < 100) {
+        progress += Math.random() * 15 + 5;
+        if(progress > 100) progress = 100;
+        progressFill.style.width = progress + '%';
+        progressBar.setAttribute('aria-valuenow', Math.floor(progress));
+        setTimeout(simulateProgress, 300);
+      } else {
+        window.location.href = downloadLink;
+      }
+    }
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        if(progressContainer.style.display === 'block') return;
+        const link = button.getAttribute('data-link');
+        if(link) {
+          startDownload(link);
+        }
+      });
+    });
   </script>
 </body>
 </html>
