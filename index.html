@@ -163,6 +163,23 @@
     white-space: nowrap; /* prevent wrapping */
     max-width: 80%; /* prevent overflow */
   }
+  .online-download-game-status {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #af4c4c80; /* semi-transparent green */
+    border: 2px solid #af4c4c; /* darker green outline */
+    border-radius: 20px; /* capsule shape */
+    padding: 4px 10px; /* padding to expand width if needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    white-space: nowrap; /* prevent wrapping */
+    max-width: 80%; /* prevent overflow */
+  }
   footer {
     text-align: center;
     padding: 2rem 1rem;
@@ -412,10 +429,11 @@
         <div class="game-title">Particle Life</div>
         <div class="game-description">Thousands of particles interact and evolve, creating intricate, life-like structures based on simple, foundational rules.</div>
         <div class="os-compatibility">
-          <span class="os-badge">Every Device</span>
+          <span class="os-badge">Every Device (🌐)</span>
+          <span class="os-badge">Windows (⬇️)</span>
         </div>
-        <div class="online-game-status" title="Online only">
-          🌐
+         <div class="online-download-game-status" title="Online and Downloadable">
+          🌐⬇️
         </div>
       </div>
     </a>
@@ -423,7 +441,7 @@
       <img src="https://nexustore.github.io/assets/GrowAGarden.png" alt="Grow A Garden" class="game-image" />
       <div class="game-info">
         <div class="game-title">Grow A Garden</div>
-        <div class="game-description">Thousands of particles interact and evolve, creating intricate, life-like structures based on simple, foundational rules.Are you ready to grow your very own garden? Buy seeds from the shop when they restock, plant them, wait for them to grow, and collect the profits! Flex fruits and finds on friends, and have fun!</div>
+        <div class="game-description">Are you ready to grow your very own garden? Buy seeds from the shop when they restock, plant them, wait for them to grow, and collect the profits! Flex fruits and finds on friends, and have fun!</div>
         <div class="os-compatibility">
           <span class="os-badge">PC Only</span>
         </div>
